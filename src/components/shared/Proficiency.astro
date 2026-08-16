@@ -1,0 +1,36 @@
+---
+import ListItem from "./ListItem.astro";
+
+interface Props {
+	name: string;
+	level?: string;
+	tags?: Array<string>;
+}
+
+const { name, level, tags } = Astro.props;
+---
+
+<ListItem>
+  <div class="flex flex-col w-full gap-2">
+    <h3 class="font-semibold">{name}</h3>
+    {
+      level && (
+        <span class="bg-gray-100 p-1 pl-2 pr-2 rounded-md text-xs text-gray-700 w-max">
+          {level}
+        </span>
+      )
+    }
+
+    {
+      tags?.length ? (
+        <div class="flex gap-2 text-xs font-bold flex-wrap">
+          {tags.map((tag) => (
+            <span class="bg-gray-800 p-1 pl-2 pr-2 rounded-md text-gray-200 break-all hover:opacity-90 transition-all duration-200">
+              {tag}
+            </span>
+          ))}
+        </div>
+      ) : null
+    }
+  </div>
+</ListItem>

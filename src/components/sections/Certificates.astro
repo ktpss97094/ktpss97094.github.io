@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ListItem from "../shared/ListItem.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	certificates: CollectionEntry<"resume">["data"]["certificates"];
+}
+
+const { certificates, header } = Astro.props;
+---
+
+<Section header={header} id="certificates">
+  <ol>
+    {
+      certificates.map((certificate) => (
+        <ListItem>
+          <div class="w-full">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold">
+                {certificate.url ? (
+                  <a
+                    href={certificate.url}
+                    target="_blank"
+                    class="hover:underline"
+                  >
+                    {certificate.name}
+                  </a>
+                ) : (
+                  certificate.name
+                )}
+              </h3>
+              <span class="flex gap-1 text-gray-500">
+                <time
+                  datetime={certificate.date.toISOString()}
+                  title={certificate.date.toDateString()}
+                >
+                  {certificate.date.getFullYear()}
+                </time>
+              </span>
+            </div>
+            <p class="text-gray-500 text-sm">{certificate.issuer}</p>
+          </div>
+        </ListItem>
+      ))
+    }
+  </ol>
+</Section>

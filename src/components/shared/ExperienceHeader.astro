@@ -1,0 +1,59 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	url?: string;
+	name: string;
+	description?: string;
+	startDate: Date;
+	endDate?: Date;
+	hideEndDate?: boolean;
+}
+const props = Astro.props;
+if (!props.endDate) props.endDate = new Date();
+---
+
+<div class="flex items-center justify-between">
+  <h3 class="font-semibold">
+    {
+      props.url ? (
+        <a
+          href={props.url}
+          target="_blank"
+          class="hover:underline flex items-center gap-1"
+        >
+          {props.name}
+          <Icon name="mdi:link" class="print:hidden text-gray-500" />
+        </a>
+      ) : (
+        props.name
+      )
+    }
+    {
+      props.description && (
+        <span class="text-sm font-normal">({props.description})</span>
+      )
+    }
+  </h3>
+  <div class="text-gray-500 flex gap-1">
+    <time
+      datetime={props.startDate.toISOString()}
+      title={props.startDate.toDateString()}
+    >
+      {props.startDate.getFullYear()}
+    </time>
+    {
+      !props.hideEndDate && (
+        <>
+          <p>-</p>
+          <time
+            datetime={props.endDate.toISOString()}
+            title={props.endDate.toDateString()}
+          >
+            {props.endDate.getFullYear()}
+          </time>
+        </>
+      )
+    }
+  </div>
+</div>

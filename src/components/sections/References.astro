@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ListItem from "../shared/ListItem.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	references: CollectionEntry<"resume">["data"]["references"];
+}
+
+const { header, references } = Astro.props;
+---
+
+<Section header={header} id="references">
+  <ol>
+    {
+      references.map((reference) => (
+        <ListItem>
+          <h3 class="font-semibold">{reference.name}</h3>
+          <p class="text-gray-500 text-xs pt-2">{reference.reference}</p>
+        </ListItem>
+      ))
+    }
+  </ol>
+</Section>

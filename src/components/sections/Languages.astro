@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Proficiency from "../shared/Proficiency.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	languages: CollectionEntry<"resume">["data"]["languages"];
+}
+const { header, languages } = Astro.props;
+---
+
+<Section header={header} id="languages">
+  <ol>
+    {
+      languages.map((language) => (
+        <Proficiency name={language.language} level={language.fluency} />
+      ))
+    }
+  </ol>
+</Section>

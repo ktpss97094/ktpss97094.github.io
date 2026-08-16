@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ExperienceHeader from "../shared/ExperienceHeader.astro";
+import ListItem from "../shared/ListItem.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	education: CollectionEntry<"resume">["data"]["education"];
+	coursesHeader: string;
+}
+
+const { education, header, coursesHeader } = Astro.props;
+---
+
+<Section header={header} id="education">
+  <ol>
+    {
+      education.map((i) => (
+        <ListItem>
+          <div class="w-full">
+            <ExperienceHeader
+              name={i.institution}
+              startDate={i.startDate}
+              endDate={i.endDate}
+              url={i.url}
+            />
+            <p class="text-gray-500 text-sm">{i.area}</p>
+            <div class="flex gap-2 pt-2 pb-2 text-xs text-gray-700">
+              <span class="bg-gray-100 p-1 pl-2 pr-2 rounded-md">
+                {i.studyType}
+              </span>
+              <span class="bg-gray-100 p-1 pl-2 pr-2 rounded-md">
+                {i.score}
+              </span>
+            </div>
+            <p class="text-xs font-semibold pb-1">{coursesHeader}</p>
+            {i.courses.length ? (
+              <ul class="list-disc pl-6">
+                {i.courses.map((course) => (
+                  <li class="text-gray-500 text-xs">{course}</li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        </ListItem>
+      ))
+    }
+  </ol>
+</Section>

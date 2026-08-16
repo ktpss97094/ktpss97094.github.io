@@ -16,46 +16,46 @@ import Work from "../components/sections/Work.astro";
 import Dialog from "../components/shared/Dialog.astro";
 import Layout from "../layouts/Layout.astro";
 
-const entry = await getEntry("resume", "en/resume");
+const entry = await getEntry("resume", "cs/resume");
 if (!entry) throw new Error("Entry not found");
 const data = entry.data;
 ---
 
-<Layout locale="en" basics={data.basics}>
+<Layout locale="cs" basics={data.basics}>
   <Person basics={data.basics} />
-  <Summary header="Summary" summary={data.basics.summary} />
+  <Summary header="Shrnutí" summary={data.basics.summary} />
   <Work
-    header="Work Experience"
+    header="Pracovní zkušenosti"
     work={data.work}
-    highlightHeader="Highlights"
+    highlightHeader="Nejdůležitější body"
   />
   <Volunteer
     header="Volunteering"
-    highlightsHeader="Highlights"
+    highlightsHeader="Nejdůležitější body"
     volunteer={data.volunteer}
   />
   <Education
-    header="Education"
-    coursesHeader="Courses"
+    header="Vzdělání"
+    coursesHeader="Kurzy"
     education={data.education}
   />
-  <Awards header="Awards" awards={data.awards} />
-  <Certificates header="Certificates" certificates={data.certificates} />
-  <Publications header="Publications" publications={data.publications} />
-  <Skills header="Skills" skills={data.skills} />
-  <Languages header="Languages" languages={data.languages} />
-  <Interests header="Interests" interests={data.interests} />
-  <References header="References" references={data.references} />
+  <Awards header="Ocenění" awards={data.awards} />
+  <Certificates header="Certifikáty" certificates={data.certificates} />
+  <Publications header="Publikace" publications={data.publications} />
+  <Skills header="Schopnosti" skills={data.skills} />
+  <Languages header="Jazyky" languages={data.languages} />
+  <Interests header="Zájmy" interests={data.interests} />
+  <References header="Reference" references={data.references} />
   <Projects
-    header="Projects"
+    header="Projekty"
     projects={data.projects}
-    highlightsHeader="Highlights"
+    highlightsHeader="Nejdůležitější body"
   />
   <Dialog
     basics={data.basics}
-    languagesHeader="Languages"
-    dialogHeader="Quick actions"
-    linksHeader="Links"
-    print="Print"
+    languagesHeader="Jazyky"
+    dialogHeader="Rychlé akce"
+    linksHeader="Odkazy"
+    print="Tisknout"
   />
 </Layout>

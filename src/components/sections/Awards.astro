@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ListItem from "../shared/ListItem.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	awards: CollectionEntry<"resume">["data"]["awards"];
+}
+
+const { awards, header } = Astro.props;
+---
+
+<Section header={header} id="awards">
+  <ol>
+    {
+      awards.map((award) => (
+        <ListItem>
+          <div class="w-full">
+            <div class="flex gap-1 text-gray-500">
+              <h3 class="font-semibold">{award.title}</h3>
+              <span class="text-gray-500 flex gap-1">
+                <time
+                  datetime={award.date.toISOString()}
+                  title={award.date.toDateString()}
+                >
+                  {award.date.getFullYear()}
+                </time>
+              </span>
+            </div>
+            <p class="text-gray-500 text-sm">{award.awarder}</p>
+            <p class="pt-2 text-gray-500 text-xs">{award.summary}</p>
+          </div>
+        </ListItem>
+      ))
+    }
+  </ol>
+</Section>

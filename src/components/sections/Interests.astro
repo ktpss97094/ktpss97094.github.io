@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Proficiency from "../shared/Proficiency.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	interests: CollectionEntry<"resume">["data"]["interests"];
+}
+const { header, interests } = Astro.props;
+---
+
+<Section header={header} id="interests">
+  <ol>
+    {
+      interests.map((interest) => (
+        <Proficiency name={interest.name} tags={interest.keywords} />
+      ))
+    }
+  </ol>
+</Section>

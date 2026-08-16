@@ -1,46 +1,45 @@
-# Astro Starter Kit: Basics
+# Minimalist Astro CV
 
-```sh
-npm create astro@latest -- --template basics
-```
+A simple Astro CV inspired by [Minimalist CV by Bartosz Jarocki](https://github.com/BartoszJarocki/cv) with some extra features.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Built with Astro 7 and Tailwind CSS 4.
 
-## 🚀 Project Structure
+## Features
 
-Inside of your Astro project, you'll see the following folders and files:
+- i18n
+- JSON Resume support
+- Responsive
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Content
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+[Astro content collections](https://docs.astro.build/en/guides/content-collections/) were used to define the content, however the pages have to be assembled *manually*. I decided to do so to have more control over how each page looks. After all this is just a starting template which should be further customized.
 
-## 🧞 Commands
+## JSON Resume
 
-All commands are run from the root of the project, from a terminal:
+The content collection schema for the resume basically matches the [JSON Resume schema](https://jsonresume.org/schema/) and under `/api/{locale}.json` one can find a json representation of your resume. 
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+The path to the image gets replaced but you have to set the `site` config value in [`astro.config.mjs`](./astro.config.mjs)(for example `https://example.com` is going to result in  `https://example.com/_astro/photo.MK1hhBVF.jpg`)
 
-## 👀 Want to learn more?
+## Development
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Requires Node.js 22.12 or newer. The project pins pnpm through Corepack so local development and CI use the same package manager version.
+
+1. Enable Corepack and install dependencies
+	```sh
+	corepack enable
+	pnpm install
+	```
+1. Start the dev server
+	```sh
+	pnpm dev
+	```
+1. Run the full validation and production build
+	```sh
+	pnpm build
+	pnpm lint
+	pnpm format:check
+	```
+
+## Deployment
+
+Pushes to `main` are automatically built and deployed to GitHub Pages by [the deployment workflow](./.github/workflows/deploy.yml). In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**.

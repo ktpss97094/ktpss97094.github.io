@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Experience from "../shared/Experience.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	volunteer: CollectionEntry<"resume">["data"]["volunteer"];
+	highlightsHeader: string;
+}
+const { header, volunteer, highlightsHeader } = Astro.props;
+---
+
+<Section header={header} id="volunteer">
+  <ol class="flex gap-4 flex-col">
+    {
+      volunteer.map((i) => (
+        <Experience
+          endDate={i.endDate}
+          highlights={i.highlights}
+          name={i.organization}
+          position={i.position}
+          startDate={i.startDate}
+          summary={i.summary}
+          url={i.url}
+          highlightsHeader={highlightsHeader}
+        />
+      ))
+    }
+  </ol>
+</Section>

@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ExperienceHeader from "../shared/ExperienceHeader.astro";
+import ListItem from "../shared/ListItem.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	publications: CollectionEntry<"resume">["data"]["publications"];
+}
+
+const { header, publications } = Astro.props;
+---
+
+<Section header={header} id="publications">
+  <ol>
+    {
+      publications.map((publication) => (
+        <ListItem>
+          <div class="w-full">
+            <ExperienceHeader
+              name={publication.name}
+              startDate={publication.releaseDate}
+              url={publication.url}
+              hideEndDate
+            />
+            <p class="text-gray-500 text-sm">{publication.publisher}</p>
+            <p class="text-gray-500 text-xs pt-2">{publication.summary}</p>
+          </div>
+        </ListItem>
+      ))
+    }
+  </ol>
+</Section>

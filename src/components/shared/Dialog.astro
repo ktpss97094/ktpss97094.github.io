@@ -1,0 +1,105 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import transformProfiles from "../../utils/transformProfiles";
+
+interface Props {
+	basics: CollectionEntry<"resume">["data"]["basics"];
+	languagesHeader: string;
+	dialogHeader: string;
+	linksHeader: string;
+	print: string;
+}
+const { basics, languagesHeader, dialogHeader, linksHeader, print } =
+	Astro.props;
+const links = transformProfiles(basics);
+---
+
+<button
+  type="button"
+  id="open"
+  aria-label={dialogHeader}
+  class="bg-gray-200 p-3 font-bold print:hidden rounded-full fixed bottom-4 right-4"
+  ><Icon name="mdi:apple-keyboard-command" aria-hidden="true" /></button
+>
+
+<dialog
+  id="dialog"
+  class="m-auto rounded-md bg-white shadow-xl backdrop:backdrop-blur-md w-full sm:w-1/2 2xl:w-1/5 sm:min-w-96 print:hidden"
+>
+  <div
+    class="flex border-b border-solid border-gray-200 h-10 items-center pl-2 justify-between"
+  >
+    <h2>{dialogHeader}</h2>
+    <button
+      type="button"
+      id="close"
+      aria-label="Close"
+      class="text-gray-600 w-8 h-full cursor-pointer p-1"
+    >
+      <Icon name="mdi:close" aria-hidden="true" />
+    </button>
+  </div>
+  <div class="flex flex-col p-2 gap-1 text-sm">
+    <button
+      type="button"
+      class="w-full p-2 hover:bg-gray-50 transition-all duration-200 flex gap-1 items-center cursor-pointer"
+      onclick="window.print()"
+    >
+      <Icon name="mdi:printer" class="text-gray-500" aria-hidden="true" />
+      {print}
+    </button>
+    <div class="flex flex-col">
+      <h5 class="text-gray-500 pb-1">{linksHeader}</h5>
+      {
+        links.map((link) => (
+          <a
+            href={link.url}
+            class="p-2 hover:underline hover:bg-gray-50 transition-all duration-200 flex gap-1 items-center"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon name={link.icon} class="text-gray-500" aria-hidden="true" />
+            {link.username}
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex flex-col">
+      <h5 class="text-gray-500 pb-1">{languagesHeader}</h5>
+      <a
+        href="/"
+        class="p-2 hover:underline hover:bg-gray-50 transition-all duration-200"
+        >English</a
+      >
+      <a
+        href="/cs"
+        class="p-2 hover:underline hover:bg-gray-50 transition-all duration-200"
+        >Čeština</a
+      >
+    </div>
+  </div>
+</dialog>
+
+<style>
+  dialog::backdrop {
+    background: radial-gradient(#00000010, #000000a0);
+  }
+</style>
+
+<script>
+  const isDialog = (el: HTMLElement | null): el is HTMLDialogElement =>
+    !!el && el.tagName === "DIALOG";
+
+  function getDialog() {
+    const el = document.getElementById("dialog");
+    return isDialog(el) ? el : undefined;
+  }
+  document
+    .getElementById("open")
+    ?.addEventListener("click", () => getDialog()?.showModal());
+
+  document
+    .getElementById("close")
+    ?.addEventListener("click", () => getDialog()?.close());
+</script>

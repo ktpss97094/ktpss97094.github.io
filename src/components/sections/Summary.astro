@@ -1,0 +1,14 @@
+---
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	summary: string;
+}
+
+const { header, summary } = Astro.props;
+---
+
+<Section header={header} id="summary">
+  <p class="text-gray-500">{summary}</p>
+</Section>

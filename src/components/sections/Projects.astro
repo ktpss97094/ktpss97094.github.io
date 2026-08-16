@@ -1,0 +1,69 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ExperienceHeader from "../shared/ExperienceHeader.astro";
+import ListItem from "../shared/ListItem.astro";
+import Section from "../shared/Section.astro";
+
+interface Props {
+	header: string;
+	projects: CollectionEntry<"resume">["data"]["projects"];
+	highlightsHeader: string;
+}
+
+const { header, projects, highlightsHeader } = Astro.props;
+---
+
+<Section header={header} id="projects">
+  <ol>
+    {
+      projects.map((project) => (
+        <ListItem>
+          <div class="w-full">
+            <ExperienceHeader
+              name={project.name}
+              startDate={project.startDate}
+              endDate={project.endDate}
+              url={project.url}
+              description={project.type}
+            />
+            {project.entity && (
+              <p class="text-gray-500 text-sm">{project.entity}</p>
+            )}
+            <p class="text-gray-500 text-xs pt-2">{project.description}</p>
+            {project.highlights.length ? (
+              <>
+                <p class="text-xs font-semibold pb-1 pt-1">
+                  {highlightsHeader}
+                </p>
+                <ul class="list-disc pl-6 pb-1">
+                  {project.highlights.map((highlight) => (
+                    <li class="text-gray-500 text-xs">{highlight}</li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
+
+            {project.roles.length ? (
+              <div class="flex gap-2 pt-2 pb-2 text-xs text-gray-700">
+                {project.roles.map((role) => (
+                  <span class="bg-gray-100 p-1 pl-2 pr-2 rounded-md">
+                    {role}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+            {project.keywords.length ? (
+              <div class="flex gap-2 text-xs font-bold flex-wrap">
+                {project.keywords.map((keyword) => (
+                  <span class="bg-gray-800 p-1 pl-2 pr-2 rounded-md text-gray-200 break-all hover:opacity-90 transition-all duration-200">
+                    {keyword}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </ListItem>
+      ))
+    }
+  </ol>
+</Section>

@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import transformProfiles from "../../utils/transformProfiles";
+import ProfileLink from "../shared/ProfileLink.astro";
+
+interface Props {
+	basics: CollectionEntry<"resume">["data"]["basics"];
+}
+
+const { basics } = Astro.props;
+
+const links = transformProfiles(basics);
+---
+
+<section class="flex flex-row gap-1">
+  <div class="flex flex-col gap-3 flex-grow">
+    <div>
+      <h1 class="text-2xl font-bold">{basics.name}</h1>
+      <p class="text-sm text-gray-500">{basics.label}</p>
+    </div>
+
+    {
+      links.length ? (
+        <span class="flex flex-row gap-1 flex-wrap">
+          {links.map((link) => (
+            <ProfileLink href={link.url} title={link.username}>
+              <Icon name={link.icon} aria-label={link.icon} />
+            </ProfileLink>
+          ))}
+        </span>
+      ) : null
+    }
+    {
+      basics.location && (
+        <a
+          href={`https://google.com/maps/place/${basics.location.city},+${basics.location.countryCode}`}
+          target="_blank"
+          class="flex items-center gap-1 text-gray-500 text-sm hover:underline"
+        >
+          <Icon name="mdi:globe" aria-label="globe-icon" />
+          {basics.location.city}, {basics.location.countryCode}
+        </a>
+      )
+    }
+  </div>
+  {
+    basics.image && (
+      <Image
+        src={basics.image}
+        alt={basics.name}
+        class="sm:w-28 sm:h-28 w-20 h-20 aspect-square rounded-md flex-shrink-0"
+      />
+    )
+  }
+</section>
