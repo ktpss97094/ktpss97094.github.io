@@ -30,17 +30,21 @@ const { education, header, coursesHeader } = Astro.props;
               <span class="bg-gray-100 p-1 pl-2 pr-2 rounded-md">
                 {i.studyType}
               </span>
-              <span class="bg-gray-100 p-1 pl-2 pr-2 rounded-md">
-                {i.score}
-              </span>
+              {i.score && (
+                <span class="bg-gray-100 p-1 pl-2 pr-2 rounded-md">
+                  {i.score}
+                </span>
+              )}
             </div>
-            <p class="text-xs font-semibold pb-1">{coursesHeader}</p>
             {i.courses.length ? (
-              <ul class="list-disc pl-6">
-                {i.courses.map((course) => (
-                  <li class="text-gray-500 text-xs">{course}</li>
-                ))}
-              </ul>
+              <>
+                <p class="text-xs font-semibold pb-1">{coursesHeader}</p>
+                <ul class="list-disc pl-6">
+                  {i.courses.map((course) => (
+                    <li class="text-gray-500 text-xs">{course}</li>
+                  ))}
+                </ul>
+              </>
             ) : null}
           </div>
         </ListItem>

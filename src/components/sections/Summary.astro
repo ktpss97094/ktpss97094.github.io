@@ -1,4 +1,5 @@
 ---
+import MarkdownIt from "markdown-it";
 import Section from "../shared/Section.astro";
 
 interface Props {
@@ -7,8 +8,26 @@ interface Props {
 }
 
 const { header, summary } = Astro.props;
+
+const markdown = new MarkdownIt({
+	html: false,
+	linkify: true,
+});
+const summaryHtml = markdown.renderInline(summary);
 ---
 
 <Section header={header} id="summary">
-  <p class="text-gray-500">{summary}</p>
+  <p class="summary text-gray-500" set:html={summaryHtml} />
 </Section>
+
+<style>
+  .summary :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .summary :global(a:hover) {
+    color: #374151;
+  }
+</style>

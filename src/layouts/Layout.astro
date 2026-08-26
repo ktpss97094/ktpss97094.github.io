@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { basics, locale } = Astro.props;
-const title = `${basics.name} | ${basics.label}`;
+const title = basics.label ? `${basics.name} | ${basics.label}` : basics.name;
 const twitterLink = basics.profiles.find(
 	(profile) => profile.network === "Twitter",
 );
@@ -37,16 +37,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <meta name="description" content={basics.summary} />
+    {basics.summary && <meta name="description" content={basics.summary} />}
     <link rel="canonical" href={canonicalURL} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={basics.summary} />
+    {basics.summary && (
+      <meta property="og:description" content={basics.summary} />
+    )}
     <meta property="og:url" content={canonicalURL} />
     {image && <meta property="og:image" content={image} />}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={basics.summary} />
+    {basics.summary && (
+      <meta name="twitter:description" content={basics.summary} />
+    )}
     {image && <meta name="twitter:image" content={image} />}
     {twitterLink && (
       <meta name="twitter:creator" content={twitterLink.username} />

@@ -1,90 +1,75 @@
 {
     "basics": {
         "name": "Xing-Hua Peng",
-        "label": "Programmer",
         "image": "../photo.jpg",
-        "email": "john@gmail.com",
-        "phone": "(912) 555-4321",
-        "url": "https://astro.build",
-        "summary": "A summary of John Doe…",
-        "location": {
-            "address": "2712 Broadway St",
-            "postalCode": "CA 94115",
-            "city": "San Francisco",
-            "countryCode": "US",
-            "region": "California"
-        },
+        "email": "ktpss97094@gmail.com",
+        "url": "https://ktpss97094.github.io/",
+        "summary": "Recent Computer Science M.S. graduate based in Taiwan, with research experience at the [Embedded Platform Lab](https://epl.tw/) (EPL), specializing in firmware protocol verification in embedded systems.",
         "profiles": [
             {
-                "network": "Twitter",
-                "username": "astrodotbuild",
-                "url": "https://twitter.com/astrodotbuild"
+                "network": "GitHub",
+                "username": "ktpss97094",
+                "url": "https://github.com/ktpss97094",
+                "icon": "simple-icons:github"
+            },
+            {
+                "network": "LinkedIn",
+                "username": "ktpss97094",
+                "url": "https://www.linkedin.com/in/ktpss97094",
+                "icon": "simple-icons:linkedin"
+            },
+            {
+                "network": "ORCID",
+                "username": "0009-0003-2147-5881",
+                "url": "https://orcid.org/0009-0003-2147-5881",
+                "icon": "simple-icons:orcid"
+            },
+            {
+                "network": "HackMD",
+                "username": "ktpss97094",
+                "url": "https://hackmd.io/@ktpss97094",
+                "icon": "simple-icons:hackmd"
+            },
+            {
+                "network": "YouTube",
+                "username": "ktpss97094",
+                "url": "https://www.youtube.com/@ktpss97094",
+                "icon": "simple-icons:youtube"
             }
         ]
     },
-    "work": [
-        {
-            "name": "Company",
-            "position": "President",
-            "url": "https://company.com",
-            "startDate": "2013-01-01",
-            "endDate": "2014-01-01",
-            "summary": "Description…",
-            "highlights": [
-                "Started the company"
-            ]
-        }
-    ],
-    "volunteer": [
-        {
-            "organization": "Organization",
-            "position": "Volunteer",
-            "url": "https://organization.com/",
-            "startDate": "2012-01-01",
-            "endDate": "2013-01-01",
-            "summary": "Description…",
-            "highlights": [
-                "Awarded 'Volunteer of the Month'"
-            ]
-        }
-    ],
     "education": [
         {
-            "institution": "University",
-            "url": "https://institution.com/",
-            "area": "Software Development",
-            "studyType": "Bachelor",
-            "startDate": "2011-01-01",
-            "endDate": "2013-01-01",
-            "score": "4.0",
-            "courses": [
-                "DB1101 - Basic SQL"
-            ]
-        }
-    ],
-    "awards": [
+            "institution": "National Tsing Hua University",
+            "url": "https://nthu-en.site.nthu.edu.tw/",
+            "area": "Institute of Information Systems and Applications",
+            "studyType": "Master of Science",
+            "startDate": "2024-09-02",
+            "endDate": "2026-05-30"
+        },
         {
-            "title": "Award",
-            "date": "2014-11-01",
-            "awarder": "Company",
-            "summary": "There is no spoon."
-        }
-    ],
-    "certificates": [
-        {
-            "name": "Certificate",
-            "date": "2021-11-07",
-            "issuer": "Company",
-            "url": "https://certificate.com"
+            "institution": "National Yang Ming Chiao Tung University",
+            "url": "https://www.nycu.edu.tw/nycu/en",
+            "area": "Department of Computer Science",
+            "studyType": "Bachelor of Science",
+            "startDate": "2020-09-14",
+            "endDate": "2024-06-15"
         }
     ],
     "publications": [
         {
-            "name": "Publication",
-            "publisher": "Company",
-            "releaseDate": "2014-10-01",
-            "url": "https://publication.com",
-            "summary": "Description…"
+            "name": "Verification of Protocol Compliance by Symbolic Execution",
+            "publisher": "1st International Workshop on Firmware Testing and Analysis (FTA '26)",
+            "releaseDate": "2026",
+            "url": "https://doi.org/10.1145/3842651.3843180",
+            "summary": "Held in conjunction with SPLASH/ISSTA 2026."
+        },
+        {
+            "name": "Automated Verification of Protocol Compliance for Embedded Firmware via High-Fidelity Symbolic Execution",
+            "publisher": "National Tsing Hua University",
+            "releaseDate": "2026",
+            "url": "https://etd.lib.nthu.edu.tw/detail/062603adddcdaa177570616926eba469/",
+            "summary": "Master's Thesis."
         }
     ],
     "skills": [
@@ -100,23 +85,12 @@
     ],
     "languages": [
         {
+            "language": "Mandarin",
+            "fluency": "Native"
+        },
+        {
             "language": "English",
-            "fluency": "Native speaker"
-        }
-    ],
-    "interests": [
-        {
-            "name": "Wildlife",
-            "keywords": [
-                "Ferrets",
-                "Unicorns"
-            ]
-        }
-    ],
-    "references": [
-        {
-            "name": "Jane Doe",
-            "reference": "Reference…"
+            "fluency": "Reading & Listening (Intermediate), Speaking (Basic)"
         }
     ],
     "projects": [

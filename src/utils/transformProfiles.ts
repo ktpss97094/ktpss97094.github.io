@@ -33,11 +33,10 @@ function transformProfiles(
 
 	return [
 		...links,
-		...basics.profiles.map((p) => {
-			const hostname = new URL(p.url).hostname;
-			const icon = `mdi:${hostname.split(".").at(-2)}`;
-			return { icon, ...p };
-		}),
+		...basics.profiles.map((profile) => ({
+			...profile,
+			icon: profile.icon ?? "mdi:link",
+		})),
 	];
 }
 export default transformProfiles;

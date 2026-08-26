@@ -3,7 +3,7 @@
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
-	"packageManager": "pnpm@11.22.0",
+	"packageManager": "pnpm@11.24.0+sha512.bd27e345e976dcb0be0b7a1228217b049a817e21b1f355c90dbe7dc46671895a8bc1e6d06c24554505ea93ea0b45f489a27ec1bfbc8de6a9659fca0f16fa0000",
 	"engines": {
 		"node": ">=22.12.0"
 	},
@@ -21,14 +21,16 @@
 	},
 	"dependencies": {
 		"@iconify-json/mdi": "^1.2.3",
-		"astro": "^7.2.2",
-		"astro-icon": "^1.1.5"
+		"astro": "^7.2.6",
+		"astro-icon": "^1.2.0",
+		"markdown-it": "15.0.0"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.10",
-		"@biomejs/biome": "^2.5.8",
+		"@biomejs/biome": "^2.5.10",
 		"@commitlint/cli": "^21.2.2",
 		"@commitlint/config-conventional": "^21.2.2",
+		"@iconify-json/simple-icons": "^1.2.93",
 		"@tailwindcss/vite": "^4.3.3",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.3.0",

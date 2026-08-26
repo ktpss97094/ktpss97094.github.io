@@ -5,13 +5,14 @@ import profile from "./profile";
 export default (image: ImageFunction) =>
 	z.object({
 		name: z.string(),
-		label: z.string().describe("e.g. Web Develope"),
+		label: z.string().optional().describe("e.g. Web Develope"),
 		image: image().optional().describe("Photo of you or an icon"),
 		email: z.email().optional(),
 		phone: z.string().optional(),
 		url: z.string().optional(),
 		summary: z
 			.string()
+			.optional()
 			.describe("Write a short 2-3 sentence biography about yourself"),
 		location: z
 			.object({
@@ -32,6 +33,7 @@ export default (image: ImageFunction) =>
 			.optional(),
 		profiles: profile
 			.array()
+			.default([])
 			.describe(
 				"Specify any number of social networks that you participate in",
 			),

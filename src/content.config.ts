@@ -19,31 +19,39 @@ const resumeCollection = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			basics: basic(image),
-			work: work.array(),
-			volunteer: volunteer.array(),
-			education: education.array(),
+			work: work.array().default([]),
+			volunteer: volunteer.array().default([]),
+			education: education.array().default([]),
 			awards: award
 				.array()
+				.default([])
 				.describe(
 					"Specify any awards you have received throughout your professional career",
 				),
 			certificates: certificate
 				.array()
+				.default([])
 				.describe(
 					"Specify any certificates you have received throughout your professional career",
 				),
 			publications: publication
 				.array()
+				.default([])
 				.describe("Specify your publications through your career"),
-			skills: skill.array().describe("List out your professional skill-set"),
+			skills: skill
+				.array()
+				.default([])
+				.describe("List out your professional skill-set"),
 			languages: language
 				.array()
+				.default([])
 				.describe("List any other languages you speak"),
-			interests: interest.array(),
+			interests: interest.array().default([]),
 			references: reference
 				.array()
+				.default([])
 				.describe("List references you have received"),
-			projects: project.array().describe("Specify career projects"),
+			projects: project.array().default([]).describe("Specify career projects"),
 		}),
 });
 

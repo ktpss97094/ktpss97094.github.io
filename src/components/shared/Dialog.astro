@@ -5,13 +5,11 @@ import transformProfiles from "../../utils/transformProfiles";
 
 interface Props {
 	basics: CollectionEntry<"resume">["data"]["basics"];
-	languagesHeader: string;
 	dialogHeader: string;
 	linksHeader: string;
 	print: string;
 }
-const { basics, languagesHeader, dialogHeader, linksHeader, print } =
-	Astro.props;
+const { basics, dialogHeader, linksHeader, print } = Astro.props;
 const links = transformProfiles(basics);
 ---
 
@@ -49,9 +47,11 @@ const links = transformProfiles(basics);
       <Icon name="mdi:printer" class="text-gray-500" aria-hidden="true" />
       {print}
     </button>
-    <div class="flex flex-col">
-      <h5 class="text-gray-500 pb-1">{linksHeader}</h5>
-      {
+    {
+      links.length > 0 && (
+        <div class="flex flex-col">
+          <h5 class="text-gray-500 pb-1">{linksHeader}</h5>
+          {
         links.map((link) => (
           <a
             href={link.url}
@@ -63,21 +63,10 @@ const links = transformProfiles(basics);
             {link.username}
           </a>
         ))
-      }
-    </div>
-    <div class="flex flex-col">
-      <h5 class="text-gray-500 pb-1">{languagesHeader}</h5>
-      <a
-        href="/"
-        class="p-2 hover:underline hover:bg-gray-50 transition-all duration-200"
-        >English</a
-      >
-      <a
-        href="/cs"
-        class="p-2 hover:underline hover:bg-gray-50 transition-all duration-200"
-        >Čeština</a
-      >
-    </div>
+          }
+        </div>
+      )
+    }
   </div>
 </dialog>
 

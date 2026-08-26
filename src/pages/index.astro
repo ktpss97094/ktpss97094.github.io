@@ -23,37 +23,76 @@ const data = entry.data;
 
 <Layout locale="en" basics={data.basics}>
   <Person basics={data.basics} />
-  <Summary header="Summary" summary={data.basics.summary} />
-  <Work
-    header="Work Experience"
-    work={data.work}
-    highlightHeader="Highlights"
-  />
-  <Volunteer
-    header="Volunteering"
-    highlightsHeader="Highlights"
-    volunteer={data.volunteer}
-  />
-  <Education
-    header="Education"
-    coursesHeader="Courses"
-    education={data.education}
-  />
-  <Awards header="Awards" awards={data.awards} />
-  <Certificates header="Certificates" certificates={data.certificates} />
-  <Publications header="Publications" publications={data.publications} />
-  <Skills header="Skills" skills={data.skills} />
-  <Languages header="Languages" languages={data.languages} />
-  <Interests header="Interests" interests={data.interests} />
-  <References header="References" references={data.references} />
-  <Projects
-    header="Projects"
-    projects={data.projects}
-    highlightsHeader="Highlights"
-  />
+  {
+    data.basics.summary && (
+      <Summary header="Summary" summary={data.basics.summary} />
+    )
+  }
+  {
+    data.work.length > 0 && (
+      <Work
+        header="Work Experience"
+        work={data.work}
+        highlightHeader="Highlights"
+      />
+    )
+  }
+  {
+    data.volunteer.length > 0 && (
+      <Volunteer
+        header="Volunteering"
+        highlightsHeader="Highlights"
+        volunteer={data.volunteer}
+      />
+    )
+  }
+  {
+    data.education.length > 0 && (
+      <Education
+        header="Education"
+        coursesHeader="Courses"
+        education={data.education}
+      />
+    )
+  }
+  {data.awards.length > 0 && <Awards header="Awards" awards={data.awards} />}
+  {
+    data.certificates.length > 0 && (
+      <Certificates header="Certificates" certificates={data.certificates} />
+    )
+  }
+  {
+    data.publications.length > 0 && (
+      <Publications header="Publications" publications={data.publications} />
+    )
+  }
+  {data.skills.length > 0 && <Skills header="Skills" skills={data.skills} />}
+  {
+    data.languages.length > 0 && (
+      <Languages header="Languages" languages={data.languages} />
+    )
+  }
+  {
+    data.interests.length > 0 && (
+      <Interests header="Interests" interests={data.interests} />
+    )
+  }
+  {
+    data.references.length > 0 && (
+      <References header="References" references={data.references} />
+    )
+  }
+  {
+    data.projects.length > 0 && (
+      <Projects
+        header="Projects"
+        projects={data.projects}
+        highlightsHeader="Highlights"
+      />
+    )
+  }
   <Dialog
     basics={data.basics}
-    languagesHeader="Languages"
     dialogHeader="Quick actions"
     linksHeader="Links"
     print="Print"
